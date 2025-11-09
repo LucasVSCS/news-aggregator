@@ -10,7 +10,6 @@ class DeleteSourceService
     private SourceWriteRepositoryInterface $sourceWriteRepository;
     private SourceReadRepositoryInterface $sourceReadRepository;
 
-
     public function __construct(SourceWriteRepositoryInterface $sourceWriteRepository, SourceReadRepositoryInterface $sourceReadRepository)
     {
         $this->sourceWriteRepository = $sourceWriteRepository;

@@ -19,7 +19,7 @@ class EloquentSourceReadRepository implements SourceReadRepositoryInterface
         return Cache::remember(
             'sources.active',
             now()->addHours(24),
-            fn() => Source::where('is_active', true)->get()
+            fn () => Source::where('is_active', true)->get()
         );
     }
 
@@ -33,7 +33,7 @@ class EloquentSourceReadRepository implements SourceReadRepositoryInterface
         return Cache::remember(
             'sources.all',
             now()->addHours(24),
-            fn() => Source::orderBy('name')->get()
+            fn () => Source::orderBy('name')->get()
         );
     }
 
@@ -53,7 +53,7 @@ class EloquentSourceReadRepository implements SourceReadRepositoryInterface
         return Cache::remember(
             "source.slug.{$slug}",
             now()->addHours(24),
-            fn() => Source::where('slug', $slug)->first()
+            fn () => Source::where('slug', $slug)->first()
         );
     }
 
@@ -67,7 +67,7 @@ class EloquentSourceReadRepository implements SourceReadRepositoryInterface
         return Cache::remember(
             'sources.with_count',
             now()->addHours(1),
-            fn() => Source::withCount('articles')->orderBy('name')->get()
+            fn () => Source::withCount('articles')->orderBy('name')->get()
         );
     }
 }
