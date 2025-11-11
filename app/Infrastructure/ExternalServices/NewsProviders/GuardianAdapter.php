@@ -15,7 +15,8 @@ class GuardianAdapter implements NewsProviderInterface
 {
     public function __construct(
         private readonly Source $source
-    ) {}
+    ) {
+    }
 
     public function fetchArticles(array $params = []): Collection
     {

@@ -15,7 +15,8 @@ class NewsApiOrgAdapter implements NewsProviderInterface
 {
     public function __construct(
         private readonly Source $source
-    ) {}
+    ) {
+    }
 
     public function fetchArticles(array $params = []): Collection
     {
@@ -39,7 +40,7 @@ class NewsApiOrgAdapter implements NewsProviderInterface
 
             return collect($data['articles'] ?? [])->map(function ($article) {
                 return $this->transformArticle($article);
-            })->filter(fn($article) => $article !== null);
+            })->filter(fn ($article) => $article !== null);
         } catch (Exception $e) {
             Log::error('NewsAPI fetch error', [
                 'message' => $e->getMessage(),

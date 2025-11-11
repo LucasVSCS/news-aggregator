@@ -26,7 +26,9 @@ class FetchArticlesFromSourceJob implements ShouldQueue
     /**
      * Create a new job instance.
      */
-    public function __construct(public readonly Source $source) {}
+    public function __construct(public readonly Source $source)
+    {
+    }
 
     /**
      * Execute the job.

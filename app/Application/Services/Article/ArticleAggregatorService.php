@@ -17,7 +17,8 @@ class ArticleAggregatorService
     public function __construct(
         private readonly ArticleWriteRepositoryInterface $articleWriteRepository,
         private readonly CategoryRepositoryInterface $categoryRepository
-    ) {}
+    ) {
+    }
 
     /**
      * Aggregate articles from a specific source
