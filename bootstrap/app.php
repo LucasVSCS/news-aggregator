@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Foundation\Application;
+use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
 
@@ -16,4 +17,13 @@ return Application::configure(basePath: dirname(__DIR__))
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
-    })->create();
+    })
+    ->withSchedule(function (Schedule $schedule): void {
+        // Fetch news every 15 minutes
+        $schedule->command('news:fetch')
+            ->everyFifteenMinutes()
+            ->withoutOverlapping(5)
+            ->onOneServer()
+            ->runInBackground();
+    })
+    ->create();
