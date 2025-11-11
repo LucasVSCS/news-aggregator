@@ -11,7 +11,7 @@ use App\Application\Services\Source\GetSourceService;
 use App\Application\Services\Source\CreateSourceService;
 use App\Application\Services\Source\DeleteSourceService;
 use App\Application\Services\Source\UpdateSourceService;
-use App\Exceptions\Source\SourceNotFoundException;
+use App\Domain\Source\Exceptions\SourceNotFoundException;
 
 class SourceController extends Controller
 {
@@ -20,7 +20,8 @@ class SourceController extends Controller
         private CreateSourceService $createSourceService,
         private UpdateSourceService $updateSourceService,
         private DeleteSourceService $deleteSourceService
-    ) {}
+    ) {
+    }
 
     public function index(): JsonResponse
     {
@@ -42,7 +43,7 @@ class SourceController extends Controller
 
     public function update(int $id, SourceRequest $request): JsonResponse
     {
-        $source = $this->updateSourceService->execute($id, $request->validated());
+        $source = $this->updateSourceService->update($id, $request->validated());
 
         if (!$source) {
             throw new SourceNotFoundException();
