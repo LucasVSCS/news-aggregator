@@ -2,7 +2,7 @@
 
 namespace App\Domain\Source\Exceptions;
 
-use App\Exceptions\Source\SourceException;
+use App\Domain\Source\Exceptions\SourceException;
 
 class SourceNotFoundException extends SourceException
 {
